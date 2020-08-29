@@ -1,27 +1,15 @@
 import React from "react";
+import Todo from "./Todo";
 
-function TodoForm() {
-  const [todo, setTodo] = useState({
-    id: "",
-    task:"",
-    completed: false
-  })
-
-  function handleTaskInputChange(e) {
-    setTodo({ ...todo, task: e.target.value});
-  }
-
+function TodoList({ todos }) {
   return (
-    <form> 
-      <input 
-        name="task"
-        type="text"
-        value={todo.task}
-        onChange={handleTaskInputChange}
-      />
-      <button type="submit"/>
-    </form>
-  );
+    <ul>
+      {todos.map( todo => {
+        return (
+        <Todo key={todo.id} todo= {todo} /> )
+      })}
+    </ul>
+  )
 }
 
-export default TodoForm;
+export default TodoList;
